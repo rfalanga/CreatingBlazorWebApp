@@ -54,7 +54,7 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection();  // This means that you have to be using SSL
 
 app.UseStaticFiles();
 app.UseAntiforgery();
