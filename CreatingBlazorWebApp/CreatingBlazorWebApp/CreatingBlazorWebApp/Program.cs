@@ -23,9 +23,11 @@ builder.Services.AddAuthentication(options =>
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
-    .AddIdentityCookies();
+    .AddIdentityCookies();  // This is for storing identities in cookies.
 
+// At the beginning the connection string is stored in the appsettings.json file.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+// For identity, this uses ApplicationDbContext, which is a subclass of Identity
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -52,7 +54,7 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection();  // This means that you have to be using SSL
 
 app.UseStaticFiles();
 app.UseAntiforgery();
