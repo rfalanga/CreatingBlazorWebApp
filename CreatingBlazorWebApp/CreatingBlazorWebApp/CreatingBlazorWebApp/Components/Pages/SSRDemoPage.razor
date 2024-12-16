@@ -1,18 +1,14 @@
 ﻿@page "/ssrdemo"
 <h3>SSR Demo Page</h3>
-
-<p>
-    <button class="btn btn-primary" type="button" @onclick="SubmitClick">Submit</button>
-</p>
 <p>
     @message
 </p>
 
+<form action="/ssrResponse">
+    <input class="form-control" type="text" name="text" />
+    <input class="btn btn-primary" type="submit" value="Submit"  />"
+</form>
 @code {
     private string message = "Hello from SSR Demo Page";
 
-    private void SubmitClick()
-    {
-        message = "Button clicked"; // The reason why this doesn't work is because the page is rendered on the server and the state is not maintained on the server.
-    }
 }
