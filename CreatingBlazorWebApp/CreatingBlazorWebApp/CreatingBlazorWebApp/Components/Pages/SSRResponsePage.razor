@@ -2,6 +2,11 @@
 
 <h3>SSR Response Page</h3>
 
-@code {
+<p>
+    @MyProperty
+</p>
 
+@code {
+    [SupplyParameterFromQuery(Name = "text")]
+    string? MyProperty { get; set; }
 }
